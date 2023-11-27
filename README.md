@@ -1,4 +1,4 @@
-# Activité prétique N°2: Développement d'un Micro-Service
+# Activité pratique N°2: Développement d'un Micro-Service
 
 Réalisé par: **Adam DADDA**
 
