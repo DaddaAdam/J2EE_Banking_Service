@@ -3,7 +3,9 @@ package com.example.bankaccountservice.web;
 import com.example.bankaccountservice.dto.BankAccountRequestDTO;
 import com.example.bankaccountservice.dto.BankAccountResponseDTO;
 import com.example.bankaccountservice.entities.BankAccount;
+import com.example.bankaccountservice.entities.Customer;
 import com.example.bankaccountservice.repositories.BankAccountRepository;
+import com.example.bankaccountservice.repositories.CustomerRepository;
 import com.example.bankaccountservice.service.AccountServiceImpl;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,6 +23,7 @@ public class BankAccountGraphQLController {
 
     private BankAccountRepository bankAccountRepository;
     private AccountServiceImpl accountService;
+    private CustomerRepository customerRepository;
 
     @QueryMapping
     public List<BankAccount> accountsList(){
@@ -48,5 +51,10 @@ public class BankAccountGraphQLController {
     public Boolean deleteAccount(@Argument String id){
         bankAccountRepository.deleteById(id);
         return true;
+    }
+
+    @QueryMapping
+    public List<Customer> customersList(){
+        return customerRepository.findAll();
     }
 }
