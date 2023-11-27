@@ -1,15 +1,33 @@
 package com.example.bankaccountservice.web;
 
+import com.example.bankaccountservice.dto.BankAccountRequestDTO;
+import com.example.bankaccountservice.dto.BankAccountResponseDTO;
 import com.example.bankaccountservice.entities.BankAccount;
 import com.example.bankaccountservice.repositories.BankAccountRepository;
+import com.example.bankaccountservice.service.AccountServiceImpl;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/api")
+@Data
+@AllArgsConstructor
+@RequiredArgsConstructor
 public class AccountRestController {
-    BankAccountRepository repository;
+
+
+    private BankAccountRepository repository;
+    private AccountServiceImpl accountService;
+
+    @Autowired
+    AccountRestController(AccountServiceImpl accountService) {
+        this.accountService = accountService;
+    }
 
     public AccountRestController(BankAccountRepository repository) {
         this.repository = repository;
@@ -26,8 +44,8 @@ public class AccountRestController {
     }
 
     @PostMapping("/bankAccounts")
-    public BankAccount save(@RequestBody BankAccount bankAccount){
-        return repository.save(bankAccount);
+    public BankAccountResponseDTO save(@RequestBody BankAccountRequestDTO requestDTO){
+        return accountService.addAccount(requestDTO);
     }
 
     @PutMapping("/bankAccounts/{id}")
