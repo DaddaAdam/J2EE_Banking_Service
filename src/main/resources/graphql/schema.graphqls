@@ -10,3 +10,23 @@ type BankAccount {
     devise: String!,
     type: String!,
 }
+
+type Mutation {
+    addAccount(bankAccount: BankAccountRequestDTO!): BankAccountResponseDTO,
+    updateAccount(id: String!, bankAccount: BankAccountRequestDTO!): BankAccountResponseDTO,
+    deleteAccount(id: String!) : Boolean
+}
+
+input BankAccountRequestDTO {
+    balance: Float!,
+    devise: String!,
+    type: String!,
+}
+
+type BankAccountResponseDTO {
+    id: String!,
+    dateCreated: Float!,
+    balance: Float!,
+    devise: String!,
+    type: String!,
+}

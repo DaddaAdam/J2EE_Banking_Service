@@ -38,4 +38,22 @@ public class AccountServiceImpl implements AccountService {
 
         return bankAccountResponseDTO;
     }
+
+    @Override
+    public BankAccountResponseDTO updateAccount(String id, BankAccountRequestDTO bankAccountDTO) {
+        BankAccount bankAccount = bankAccountRepository.findById(id).orElseThrow(
+                () -> new RuntimeException("Account not found")
+        );
+
+        // Update the account from the request dto
+        bankAccount.setDevise(bankAccountDTO.getDevise());
+        bankAccount.setType(bankAccountDTO.getType());
+        bankAccount.setBalance(bankAccountDTO.getBalance());
+
+        BankAccount savedBankAccount = bankAccountRepository.save(bankAccount);
+
+        BankAccountResponseDTO bankAccountResponseDTO = accountMapper.fromBankAccount(savedBankAccount);
+
+        return bankAccountResponseDTO;
+    }
 }

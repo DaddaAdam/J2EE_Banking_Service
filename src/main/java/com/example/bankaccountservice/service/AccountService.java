@@ -8,4 +8,5 @@ import org.springframework.stereotype.Component;
 
 public interface AccountService {
     public BankAccountResponseDTO addAccount(BankAccountRequestDTO bankAccountDTO);
+    public BankAccountResponseDTO updateAccount(String id, BankAccountRequestDTO bankAccountDTO);
 }
