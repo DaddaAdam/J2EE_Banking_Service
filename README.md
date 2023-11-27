@@ -26,7 +26,7 @@ Objectif: création d'un micro-service avec Spring boot, exposer une API Restful
 
 <img width="1680" alt="Screenshot 2023-11-27 at 22 20 23" src="https://github.com/DaddaAdam/J2EE_Banking_Service/assets/77986052/afa33ddd-4631-42e4-bc31-30fbc4b6f278">
 
-## Documentation Swagger
+## Documentation SWAGGER
 
 <img width="1680" alt="Screenshot 2023-11-27 at 22 29 11" src="https://github.com/DaddaAdam/J2EE_Banking_Service/assets/77986052/b9789449-11ec-43cb-8b27-2491501ebc0e">
 
